@@ -142,6 +142,15 @@ var easy_multiply = {
 	}
 }
 
+// add a text variant of task
+var text_multiply = {
+	test: function(n,steps,last_move){return n<20 && last_move!=divide},
+	fn: function(n) {
+		var f = randrange(2,10);
+		return [{kind: 'multiply',text: 'mal '+f, n:n*f}];
+	}
+}
+
 var multiply = {
 	test: function(n,steps,last_move){return n<100 && last_move!=divide},
 	fn: function(n) {
@@ -227,6 +236,7 @@ var ten_percent = {
 var levels = {
 	'einfach': {steps: 9, start: [1,20], moves: [
 		[easy_multiply,1],
+		[text_multiply,1],
 		[halve_it,2],
 		[add,3],
 		[subtract,3],
