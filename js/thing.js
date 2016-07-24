@@ -464,7 +464,7 @@ Game.prototype = {
 
 	summarise: function(difficulty) {
 		var score = this.scores[difficulty];
-		var summary_element = $('<li class="summary"><span class="score">'+score.correct+' von '+score.attempted+'</span> '+difficulty+' Rätsel gelöst'+(score.streak>0 ? ' <span class="streak">(streak '+score.streak+')</span>':'')+'. Durchschnittliche Dauer:  <span class="average_time">'+(score.average_time!==null ? show_time(score.average_time) : '∞')+'</span>');
+		var summary_element = $('<li class="summary"><span class="score">'+score.correct+' von '+score.attempted+'</span> Rätsel "'+difficulty+'" gelöst'+(score.streak>0 ? ' <span class="streak">(streak '+score.streak+')</span>':'')+'. Durchschnittliche Dauer:  <span class="average_time">'+(score.average_time!==null ? show_time(score.average_time) : '∞')+'</span>');
 		$('#challenges').append(summary_element);
 	},
 
