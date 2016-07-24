@@ -85,7 +85,7 @@ function weighted_choice(l) {
 var easy_square_it = {
 	test: function(n){ return n>1 && n<=12 },
 	fn: function(n) {
-		return [{kind: 'square_it',text:'multiply it by itself',n:n*n}];
+		return [{kind: 'square_it',text:'zum Quadrat',n:n*n}];
 	}
 }
 
@@ -93,27 +93,27 @@ var easy_square_it = {
 var square_it = {
 	test: function(n){ return n>1 && n<20 },
 	fn: function(n) {
-		return [{kind: 'square_it',text:'multiply it by itself',n:n*n}];
+		return [{kind: 'square_it',text:'zum Quadrat',n:n*n}];
 	}
 }
 var cube_it = {
 	test: function(n){ return n>1 && n<10 },
 	fn: function(n) {
-		return [{kind: 'cube_it',text:'multiply it by itself twice',n: n*n*n}];
+		return [{kind: 'cube_it',text:'zum Kubik',n: n*n*n}];
 	}
 }
 
 var halve_it = {
 	test: function(n,steps,last_move){return n%2==0 && last_move!=double_it},
 	fn: function(n) {
-		return [{kind: 'halve_it', text: 'halve it', n:n/2}];
+		return [{kind: 'halve_it', text: 'halbieren', n:n/2}];
 	}
 }
 
 var double_it = {
 	test: function(n,steps,last_move){return last_move!=halve_it && last_move!=double_it},
 	fn: function(n) {
-		return [{kind: 'double_it', text: 'double it', n:n*2}];
+		return [{kind: 'double_it', text: 'verdoppeln', n:n*2}];
 	}
 }
 
@@ -211,7 +211,7 @@ var fraction = {
 		i /= g;
 		d /= g;
 
-		o.push({kind: 'fraction', text: show_fraction(i,d)+' of this', label: i+' / '+d+' of this', n: n*i/d});
+		o.push({kind: 'fraction', text: show_fraction(i,d)+' davon', label: i+' / '+d+' davon', n: n*i/d});
 		return o;
 	}
 }
@@ -220,7 +220,7 @@ var ten_percent = {
 	test: function(n){return n%10==0},
 	fn: function(n) {
 		var i = randrange(1,10);
-		return [{kind: 'percent', text: (i*10)+'% of this', n: n*i/10}];
+		return [{kind: 'percent', text: (i*10)+'% davon', n: n*i/10}];
 	}
 }
 
@@ -338,7 +338,7 @@ Challenge.prototype = {
 		}
 		var result = $('<li class="bit result">');
 		var form = $('<form>');
-		var input = $('<input type="number" tabindex="1" title="Answer">');
+		var input = $('<input type="number" tabindex="1" title="Antwort">');
 		form.append(input);
 		function check_it() {
 			c.check(input.val());
@@ -464,7 +464,7 @@ Game.prototype = {
 
 	summarise: function(difficulty) {
 		var score = this.scores[difficulty];
-		var summary_element = $('<li class="summary"><span class="score">'+show_fraction(score.correct,score.attempted)+'</span> '+difficulty+' puzzles solved'+(score.streak>0 ? ' <span class="streak">(streak '+score.streak+')</span>':'')+'. Average time <span class="average_time">'+(score.average_time!==null ? show_time(score.average_time) : '∞')+'</span>');
+		var summary_element = $('<li class="summary"><span class="score">'+show_fraction(score.correct,score.attempted)+'</span> '+difficulty+' Rätsel gelöst '+(score.streak>0 ? ' <span class="streak">(streak '+score.streak+')</span>':'')+'. Durchscnittliche Dauer <span class="average_time">'+(score.average_time!==null ? show_time(score.average_time) : '∞')+'</span>');
 		$('#challenges').append(summary_element);
 	},
 
