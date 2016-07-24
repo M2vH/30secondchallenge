@@ -153,7 +153,9 @@ button {
     vertical-align: middle;
 }
 .challenge .move .text {
+	/*
 	text-transform: uppercase;
+	*/
 }
 
 .challenge .result input {
@@ -177,24 +179,24 @@ button {
     line-height: 1.2em;
 }
 .challenge .result::before {
-    content: 'Answer';
+    content: 'Antwort';
 }
 
 .challenge .result, .challenge .start {
     position: relative;
 }
 
-.challenge.difficulty-easy .difficulty, .new-challenge[data-difficulty="easy"] {
+.challenge.difficulty-easy .difficulty, .new-challenge[data-difficulty="einfach"] {
 	background: green;
     color: white;
 }
 
-.challenge.difficulty-medium .difficulty, .new-challenge[data-difficulty="medium"] {
+.challenge.difficulty-medium .difficulty, .new-challenge[data-difficulty="mittel"] {
 	background: #ffc200 /*amber*/;
     color: white;
 }
 
-.challenge.difficulty-hard .difficulty, .new-challenge[data-difficulty="hard"] {
+.challenge.difficulty-hard .difficulty, .new-challenge[data-difficulty="schwer"] {
 	background: red;
     color: white;
 }
