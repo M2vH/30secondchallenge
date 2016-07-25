@@ -369,7 +369,8 @@ Challenge.prototype = {
 		var timer = $('<li class="bit time">');
 		timer.append('<span class="text">');
 		timer.on('click',check_it);
-		this.timeInterval = setInterval(function() {c.update_time()},50);
+        //  hide the countdown, still display the form
+		//  this.timeInterval = setInterval(function () { c.update_time() }, 50);
 		container.append(timer);
 		return container;
 	},
@@ -432,7 +433,9 @@ Game.prototype = {
 	version: 1,
     //	time_limit: 30,     
     //  Start with Infinity
+    //  time_limit: Infinity,
 	time_limit: Infinity,
+
 
 	set_time_limit: function(i) {
 		for(var j=0;j<times.length;j++) {
