@@ -142,8 +142,8 @@ var easy_multiply = {
 	}
 }
 
-// add a text variant of task
-var text_multiply = {
+// add a text variant of easy_multiply
+var easy_multiply_text = {
 	test: function(n,steps,last_move){return n<20 && last_move!=divide},
 	fn: function(n) {
 		var f = randrange(2,10);
@@ -158,6 +158,9 @@ var multiply = {
 		return [{kind: 'multiply',text: '×'+f, n:n*f}];
 	}
 }
+
+// ToDo
+//  Add a text variant of multiply
 
 var easy_divide = {
 	test: function(n,steps,last_move) { return n>=10 && n<100 && steps>=2 && last_move!=multiply },
@@ -194,10 +197,13 @@ var divide = {
 				n -= m;
 			}
 		}
-		o.push({kind: 'divide', text: '÷'+d, n: n/d});
+		o.push({kind: 'divide', text: ':'+d, n: n/d});
 		return o;
 	}
 }
+
+//  ToDo
+//  Add a text variant of divide
 
 var fraction = {
 	test: function(n,steps){ return steps>=2 },
@@ -224,6 +230,10 @@ var fraction = {
 		return o;
 	}
 }
+
+
+//  ToDo:
+//  Add some more percentage tasks
 
 var ten_percent = {
 	test: function(n){return n%10==0},
@@ -420,7 +430,9 @@ function Game() {
 }
 Game.prototype = {
 	version: 1,
-	time_limit: 30,
+    //	time_limit: 30,     
+    //  Start with Infinity
+	time_limit: Infinity,
 
 	set_time_limit: function(i) {
 		for(var j=0;j<times.length;j++) {
