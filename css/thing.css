@@ -13,7 +13,7 @@ header h1 {
 }
 
 .instructions {
-	font-size: 16px;
+	font-size: 24px;
     margin: 1rem;
 }
 
@@ -37,6 +37,7 @@ div#options {
 #options p:not(:last-child) {
 	border-bottom: 1px solid #ccc;
 	padding-bottom: 1rem;
+    display: none;
 }
 
 #time_limit {
