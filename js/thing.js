@@ -370,7 +370,7 @@ Challenge.prototype = {
 		timer.append('<span class="text">');
 		timer.on('click',check_it);
         //  hide the countdown, still display the form
-		//  this.timeInterval = setInterval(function () { c.update_time() }, 50);
+		this.timeInterval = setInterval(function () { c.update_time() }, 50);
 		container.append(timer);
 		return container;
 	},
