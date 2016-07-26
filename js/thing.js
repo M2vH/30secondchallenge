@@ -433,9 +433,9 @@ function Game() {
 }
 Game.prototype = {
 	version: 1,
-    time_limit: 30,     
+    //  time_limit: 30,     
     //  Start with Infinity
-    //  time_limit: Infinity,
+    time_limit: Infinity,
 
 
 	set_time_limit: function(i) {
