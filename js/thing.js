@@ -246,7 +246,7 @@ var ten_percent = {
 var levels = {
 	'einfach': {steps: 9, start: [1,20], moves: [
 		[easy_multiply,1],
-		[text_multiply,1],
+		[easy_multiply_text, 1],
 		[halve_it,2],
 		[add,3],
 		[subtract,3],
@@ -358,7 +358,7 @@ Challenge.prototype = {
 		}
 		var result = $('<li class="bit result">');
 		var form = $('<form>');
-		var input = $('<input type="number" tabindex="1" title="Antwort">');
+		var input = $('<input type="number" tabindex="1" title="answer">');
 		form.append(input);
 		function check_it() {
 			c.check(input.val());
@@ -368,8 +368,10 @@ Challenge.prototype = {
 		container.append(result);
 		var timer = $('<li class="bit time">');
 		timer.append('<span class="text">');
-		timer.on('click',check_it);
+		timer.on('click', check_it);
+
         //  hide the countdown, still display the form
+
 		this.timeInterval = setInterval(function () { c.update_time() }, 50);
 		container.append(timer);
 		return container;
