@@ -338,7 +338,9 @@ Challenge.prototype = {
         this.time_taken = 0;
 	},
 
-	make_html: function() {
+	make_html: function () {
+	    //  getting the timer_an-value
+	    var timer_an = document.getElementById("timer_an").checked;
 		var c = this;
 		var container = $('<ol class="challenge">');
 		container.addClass('difficulty-'+this.difficulty);
@@ -371,8 +373,13 @@ Challenge.prototype = {
 		timer.on('click', check_it);
 
         //  hide the countdown, still display the form
-
-		this.timeInterval = setInterval(function () { c.update_time() }, 50);
+	    //  counter will be hidden in css, 
+	    //  no timer:
+		//  uncomment next line 
+		//  this.timeInterval = setInterval(function () { c.update_time() }, 50);
+		if (this.time_limit!==Infinity && timer_an) {
+		    this.timeInterval = setInterval(function () { c.update_time() }, 50);
+		}
 		container.append(timer);
 		return container;
 	},
@@ -433,9 +440,9 @@ function Game() {
 }
 Game.prototype = {
 	version: 1,
-    //  time_limit: 30,     
+    time_limit: 30,     
     //  Start with Infinity
-    time_limit: Infinity,
+    //  time_limit: Infinity,
 
 
 	set_time_limit: function(i) {
@@ -535,6 +542,9 @@ Game.prototype = {
     }
 }
 
+/*  
+*   Das Spiel starten, wenn Seite geladen ist.
+*/  
 var game;
 $(document).ready(function() {
 	game = new Game();

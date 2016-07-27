@@ -22,6 +22,13 @@ div#options {
     background: #eee;
     padding: 0.5rem 0;
 }
+
+@media print {
+    div#options {
+        display: none;
+}
+
+}
 @media screen and (min-width: 768px) {
     div#options {
         padding: 0;
@@ -37,7 +44,11 @@ div#options {
 #options p:not(:last-child) {
 	border-bottom: 1px solid #ccc;
 	padding-bottom: 1rem;
-    display: none;
+    /*display: none; */
+}
+
+#hide_options p {
+    /*display:none;*/
 }
 
 #time_limit {
@@ -213,6 +224,8 @@ button {
 .challenge .time .text {
     text-align: right;
     width: 100%;
+    /* hide timer when disabled in JavaScript */
+    /* display: none */
 }
 
 .challenge .time {

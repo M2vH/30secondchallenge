@@ -16,18 +16,29 @@
     		<h1>Roswitha's 30 Sekunden Rätsel</h1>
             <p class="instructions">
                 <!--Start with the number in the first box and follow the instructions until you get to the end. Enter your answer and press enter (or click on the timer). -->
-                Beginne mit der Zahl im ersten Kasten und folge den Anweisungen bis Du zum Ergebnis gelangst. <br/> Gib das Ergebnis ein und drücke "Eingabe" oder klicke in die Stopuhr.
+                Beginne mit der Zahl im ersten Kasten und folge den Anweisungen bis Du zum Ergebnis gelangst. <br/> 
+                Gib das Ergebnis ein und drücke "Eingabe" oder klicke in das Feld rechts neben der Antwort. <br/>
+                Wenn die Antwort richtig ist, erscheint ein neues Rätsel.
             
             </p>
         </header>
 		<div id="options">
-			<!--
-			<p><label><input type="checkbox" id="focus_toggle"> Focus start number instead of input box</label></p>
-			-->
-            <!-- The time limit is hidden in style sheet, default time limit is Infinity. -->
-            <p><label>Time limit: <input type="range" min="1" max="27" value="27" id="time_limit"></label> <span id="time_limit-display"></span></p>
-            
-            <p><button id="reset">Daten zurücksetzen</button></p>
+            <div id="hide_options">
+                <!--
+                <p><label><input type="checkbox" id="focus_toggle"> Focus start number instead of input box</label></p>
+                -->
+                <!-- The time limit is hidden in style sheet, default time limit is Infinity. -->
+                <p><label>Time limit: <input type="range" min="1" max="27" value="6" id="time_limit"></label> <span id="time_limit-display"></span></p>
+            </div>
+                <!-- Show only this -->
+            <div id="show_options">
+                <!-- Timer an/aus -->
+                <p><label>Timer: an<input type="checkbox" id="timer_an" value="false"/></label></p>
+                <!-- Lösung ja/nein -->
+                <p><label>Lösung: nein<input type="checkbox" id="lösung_ja" /></label></p>
+                <!-- Reset Data -->
+                <p><button id="reset">Daten zurücksetzen</button></p>
+            </div>
 		</div>
 
 		<ul id="challenges"></ul>
