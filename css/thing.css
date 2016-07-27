@@ -17,11 +17,6 @@ header h1 {
     margin: 1rem;
 }
 
-@media print {
-    .instructions {
-        display:none;
-    }
-}
 div#options {
     background: #eee;
     padding: 0.5rem 0;
@@ -286,6 +281,11 @@ button.new-challenge {
 
 @media print {
     .challenge .result input {
+        display:none;
+    }
+}
+@media print {
+    .instructions {
         display:none;
     }
 }
