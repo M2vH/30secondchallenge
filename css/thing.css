@@ -307,5 +307,8 @@ button.new-challenge {
     }
     .challenge.finished {
     opacity: 1.0;
-}
+    }
+    .bit:last-child {
+    display:none;
+    }
 }
