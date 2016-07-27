@@ -288,4 +288,7 @@ button.new-challenge {
     .instructions {
         display:none;
     }
+    .challenge.finished {
+    opacity: 1.0;
+}
 }
