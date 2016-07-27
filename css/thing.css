@@ -17,7 +17,11 @@ header h1 {
     margin: 1rem;
 }
 
-
+@media print {
+    .instructions {
+        display:none;
+    }
+}
 div#options {
     background: #eee;
     padding: 0.5rem 0;
@@ -180,6 +184,7 @@ button {
 	background: transparent;
 }
 
+
 .challenge .result::before, .challenge .difficulty {
     position: absolute;
     left: 0;
@@ -248,6 +253,13 @@ button {
     display: flex;
     flex-wrap: wrap;
 }
+
+@media print {
+
+    .new-challenge-buttons {
+        display:none;
+    }
+}
 button.new-challenge {
     flex: 1 1 5em;
     width: 5em;
@@ -270,4 +282,10 @@ button.new-challenge {
 
 .summary {
     margin: 0 1rem 2rem 1rem;
+}
+
+@media print {
+    .challenge .result input {
+        display:none;
+    }
 }
