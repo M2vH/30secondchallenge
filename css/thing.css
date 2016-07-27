@@ -169,23 +169,34 @@ button {
 	*/
 }
 
+/*.challenge .result input {
+    width: 3rem;
+    height: 2rem;
+    border: none;
+    border-bottom: 1px solid gray;
+    // margin-top: 1rem; 
+	font-size: 1em;
+	background: transparent;
+}*/
+
 .challenge .result input {
     width: 3rem;
     height: 2rem;
     border: none;
     border-bottom: 1px solid gray;
-    /* margin-top: 1rem; */
-	font-size: 1em;
-	background: transparent;
+    margin-top: 0.5rem;
+    font-size: 2.0em;
+    background: transparent;
+    text-align: center;
+    font-weight: bold;
 }
-
 
 .challenge .result::before, .challenge .difficulty {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
-    padding: 1px;
+    /*padding: 1px;*/
     background: black;
     color: white;
     line-height: 1.2em;
@@ -214,7 +225,7 @@ button {
 }
 
 .challenge .move.double_it .text, .challenge .move.halve_it .text, .challenge .move.square_it .text, .challenge .move.cube_it .text {
-    font-size: 0.7em;
+    font-size: 1em;
 }
 
 .challenge .start .text {
@@ -226,11 +237,12 @@ button {
     width: 100%;
     /* hide timer when disabled in JavaScript */
     /* display: none */
+    /*  not necessary, we checkbox for the timer */
 }
 
 .challenge .time {
     padding: 1rem 0.5rem;
-    border-right: 1px solid;
+    /*border-right: 1px solid;*/
 }
 .challenge .time:hover {
     background: orange;
@@ -279,6 +291,11 @@ button.new-challenge {
     margin: 0 1rem 2rem 1rem;
 }
 
+@media print {
+    .summary {
+    display:none;
+    }
+}
 @media print {
     .challenge .result input {
         display:none;

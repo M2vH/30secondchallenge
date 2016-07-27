@@ -57,17 +57,17 @@ function gcd(a,b) {
 	return b;
 }
 
-function choice(l) {
-	var i = Math.floor(Math.random()*l.length);
-	return l[i];
+function choice(m) {
+	var i = Math.floor(Math.random()*m.length);
+	return m[i];
 }
 
-function weighted_choice(l) {
+function weighted_choice(m) {
 	var t = 0;
 	var keep = null;
-	for(var i=0;i<l.length;i++) {
-		var o = l[i][0];
-		var w = l[i][1];
+	for(var i=0;i<m.length;i++) {
+		var o = m[i][0];
+		var w = m[i][1];
 		var p = w/(t+w);
 		if(keep===null || Math.random()<p) {
 			keep = o;
@@ -106,14 +106,14 @@ var cube_it = {
 var halve_it = {
 	test: function(n,steps,last_move){return n%2==0 && last_move!=double_it},
 	fn: function(n) {
-		return [{kind: 'halve_it', text: 'halbieren', n:n/2}];
+		return [{kind: 'halve_it', text: 'halbiert', n:n/2}];
 	}
 }
 
 var double_it = {
 	test: function(n,steps,last_move){return last_move!=halve_it && last_move!=double_it},
 	fn: function(n) {
-		return [{kind: 'double_it', text: 'verdoppeln', n:n*2}];
+		return [{kind: 'double_it', text: 'doppelt', n:n*2}];
 	}
 }
 
@@ -160,7 +160,27 @@ var multiply = {
 }
 
 // ToDo
+//  Put easy_divide_text into easy list @line 288
 //  Add a text variant of multiply
+var easy_divide_text = {
+    test: function (n, steps, last_move) { return n >= 10 && n < 100 && steps >= 2 && last_move != multiply },
+    fn: function (n) {
+        var d = randrange(2, 10);
+        var m = n % d;
+        var o = [];
+        if (m) {
+            if (n < d || coin()) {
+                o.push({ kind: 'add', text: '+' + (d - m), n: n + d - m });
+                n += d - m;
+            } else {
+                o.push({ kind: 'subtract', text: '-' + m, n: n - m });
+                n -= m;
+            }
+        }
+        o.push({ kind: 'divide', text: 'durch ' + d, n: n / d });
+        return o;
+    }
+}
 
 var easy_divide = {
 	test: function(n,steps,last_move) { return n>=10 && n<100 && steps>=2 && last_move!=multiply },
@@ -177,9 +197,32 @@ var easy_divide = {
 				n -= m;
 			}
 		}
-		o.push({kind: 'divide', text: '÷'+d, n: n/d});
+		o.push({kind: 'divide', text: ':'+d, n: n/d});
 		return o;
 	}
+}
+
+//  ToDo
+//  Add a text variant of divide
+
+var divide_text = {
+    test: function (n, steps, last_move) { return n >= 10 && steps >= 2 && last_move != multiply },
+    fn: function (n) {
+        var d = randrange(2, 10);
+        var m = n % d;
+        var o = [];
+        if (m) {
+            if (n < d || coin()) {
+                o.push({ kind: 'add', text: '+' + (d - m), n: n + d - m });
+                n += d - m;
+            } else {
+                o.push({ kind: 'subtract', text: '-' + m, n: n - m });
+                n -= m;
+            }
+        }
+        o.push({ kind: 'divide', text: 'durch ' + d, n: n / d });
+        return o;
+    }
 }
 
 var divide = {
@@ -202,8 +245,6 @@ var divide = {
 	}
 }
 
-//  ToDo
-//  Add a text variant of divide
 
 var fraction = {
 	test: function(n,steps){ return steps>=2 },
@@ -243,24 +284,34 @@ var ten_percent = {
 	}
 }
 
+/*
+*   The level lists
+*   Put the challenges into the level and weight it.
+*/
 var levels = {
 	'einfach': {steps: 9, start: [1,20], moves: [
 		[easy_multiply,1],
 		[easy_multiply_text, 1],
-		[halve_it,2],
+		[halve_it, 1],
+        [double_it, 2],
 		[add,3],
 		[subtract,3],
 		[easy_square_it,1],
-		[easy_divide,1]
+		[easy_divide, 1],
+    		[easy_divide_text, 1]
+
 	]},
 	'mittel': {steps: 9, start: [10,100], moves: [
 		[multiply,2],
 		[halve_it,2],
 		[double_it,2],
 		[square_it,1],
-		[divide,1],
+		[divide, 2],
+        [divide_text,1],
 		[fraction,1],
-		[subtract,1]
+		[subtract, 1],
+        	[add, 3],
+		[subtract, 3]
 	]},
 	'schwer': {steps: 9, start: [1,100], moves: [
 		[multiply,3],
