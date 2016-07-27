@@ -276,10 +276,10 @@ var levels = {
 }
 
 var times = [
-	[12,function(i){return 5*i}, function(i,s) {return s+' seconds'}],
-	[5, function(i){return 10*i+60}, function(i,s) {return s+' seconds'}],
-	[9, function(i){return 60*(i+1)}, function(i,s) {return (i+1)+' minutes'}],
-	[1, function(i){return Infinity}, function() {return '∞'}]
+	[12,function(i){return 5*i}, function(i,s) {return s+' Sekunden'}],
+	[5, function(i){return 10*i+60}, function(i,s) {return s+' Sekunden'}],
+	[9, function(i){return 60*(i+1)}, function(i,s) {return (i+1)+' Minuten'}],
+	[1, function(i){return Infinity}, function() {return 'Ohne Zeitlimit'}]
 ];
 
 function invert_time(s) {
@@ -497,7 +497,8 @@ Game.prototype = {
 
 	summarise: function(difficulty) {
 		var score = this.scores[difficulty];
-		var summary_element = $('<li class="summary"><span class="score">'+score.correct+' von '+score.attempted+'</span> Rätsel "'+difficulty+'" gelöst'+(score.streak>0 ? ' <span class="streak">(streak '+score.streak+')</span>':'')+'. Durchschnittliche Dauer:  <span class="average_time">'+(score.average_time!==null ? show_time(score.average_time) : '∞')+'</span>');
+//		var summary_element = $('<li class="summary"><span class="score">'+score.correct+' von '+score.attempted+'</span> Rätsel "'+difficulty+'" gelöst'+(score.streak>0 ? ' <span class="streak">(streak '+score.streak+')</span>':'')+'. Durchschnittliche Dauer:  <span class="average_time">'+(score.average_time!==null ? show_time(score.average_time) : '∞')+'</span>');
+		var summary_element = $('<li class="summary"><span class="score">' + score.correct + ' von ' + score.attempted + '</span> Rätsel "' + difficulty + '" gelöst. Durchschnittliche Dauer:  <span class="average_time">' + (score.average_time !== null ? show_time(score.average_time) : '∞') + '</span>');
 		$('#challenges').append(summary_element);
 	},
 
