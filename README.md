@@ -1,6 +1,10 @@
-Inspired by the puzzle that my wife's grandma tests me with each time I visit.
+Based on the game created by https://github.com/christianp/30secondchallenge.
 
-Start with the number in the first box and follow the instructions until you get to the end. Enter your answer and press enter (or click on the timer).
+Added some features and translated into german.
+
+You can turn off the timer, and the infinity time limit will not start a timer.
+
+Added some CSS for printing, now 3 challenges will fit on an A4 sheet, the answers will be empty, all unneccessary stuff will be hidden. Now you can printout some hardcopy challenges.
 
 ## Licence
 
